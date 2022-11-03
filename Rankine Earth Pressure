@@ -1,0 +1,17 @@
+function[Pa2] = Rankine_active_ep(H,c,o,y)
+% H = input('Please enter Wall Height')
+% c = input('Please enter Cohesion coefficent.')
+% o = input('Please enter Soil Friction Anglea.')
+% y = input('Please enter Soil Unit Weight.')
+Ka = tand(45-(o/2))^2;
+% Zc = (2 * c)/(y * sqrt(Ka)) is active force  after the tensile crack appeared.
+Pa = 0.5*(y * H^2 * Ka) - (2 * c * H * sqrt(Ka));
+fprintf('Active force before Tensile Crack Appeared');
+disp(Pa);
+Zc = (2 * c)/(y * sqrt(Ka));
+Pa2 = 0.5*(H - Zc) * (y * H * Ka - 2 * c * sqrt(Ka));
+fprintf('Active force after Tensile Crack Appeared');
+disp(Pa2);
+% disp(Zc);
+% disp(Ka);
+end 
